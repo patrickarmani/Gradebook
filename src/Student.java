@@ -17,7 +17,7 @@ public class Student {
     public double calculateAverage() {
         double sum = 0;
 
-        for int i = 0; i < scores.length; i++) {
+        for (int i = 0; i < scores.length; i++) {
             sum = sum + scores[i];
         }
         return sum / scores.length;

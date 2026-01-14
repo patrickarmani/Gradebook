@@ -1,27 +1,30 @@
-//first class created
+import java.util.ArrayList;
+
 public class Student {
     String name;
     String id;
-    double[] scores;
+    ArrayList<Double> scores;
 
+    // Constructor: creates a student with name and id, and an empty score list
     public Student(String name, String id) {
         this.name = name;
         this.id = id;
-        this.scores = new double[5];
+        this.scores = new ArrayList<Double>();
     }
 
-    public void addScore(double score, int index) {
-        scores[index] = score;
+    // Adds one score to the student's score list
+    public void addScore(double score) {
+        scores.add(score);
     }
 
+    // Calculates the average of all scores (expression + loop)
     public double calculateAverage() {
-        double sum = 0;
+        if (scores.size() == 0) return 0.0;
 
-        for (int i = 0; i < scores.length; i++) {
-            sum = sum + scores[i];
+        double sum = 0.0;
+        for (int i = 0; i < scores.size(); i++) {
+            sum = sum + scores.get(i);
         }
-        return sum / scores.length;
+        return sum / scores.size();
     }
-
-
 }

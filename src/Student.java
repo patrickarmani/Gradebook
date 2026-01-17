@@ -27,4 +27,26 @@ public class Student {
         }
         return sum / scores.size();
     }
+    // new function - Determines if the student is passing based on a given passing grade  
+
+    public String getStatus(double passingGrade) {
+        double average = calculateAverage();
+        if (average >= passingGrade) {
+            return "Approved";
+        } else {
+            return "Reproved";
+        }
+    }
+
+    public String getSummary(double passingGrade) {
+    double avg = calculateAverage();
+    String status = getStatus(passingGrade);
+    return "Name: " + name + "\n"
+         + "ID: " + id + "\n"
+         + "Average: " + avg + "\n"
+         + "Status: " + status;
+
+    }
+
+    
 }

@@ -36,4 +36,12 @@ public class Gradebook {
         student.addScore(score);
         return true;
     }
+
+    public Student requireStudentById(String id) {
+        Student student = findStudentById(id);
+        if (student == null) {
+            throw new IllegalArgumentException("Student not found: " + id);
+        }
+        return student;
+    }
 }

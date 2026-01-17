@@ -51,30 +51,19 @@ public class Main {
 
                     break;
                 }
-
+                // add a try to test the error handling
                 case 3: {
+
                     System.out.print("Student ID: ");
                     String id = scanner.nextLine();
 
-                    Student student = gradebook.findStudentById(id);
+                    try {
 
-                    if (student == null) {
-                        System.out.println("Student not found.");
-                        break;
-                    }
-
-                    double avg = student.calculateAverage();
-
-                    System.out.println("\n--- Student Report ---");
-                    System.out.println("Name: " + student.name);
-                    System.out.println("ID: " + student.id);
-                    System.out.println("Average: " + avg);
-
-                    // Conditionals: approved/reproved
-                    if (avg >= PASSING_GRADE) {
-                        System.out.println("Status: APPROVED");
-                    } else {
-                        System.out.println("Status: REPROVED");
+                        Student student = gradebook.requireStudentById(id);
+                        System.out.println("\n--- Student Report ---");
+                        System.out.println(student.getSummary(PASSING_GRADE));
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
 
                     break;

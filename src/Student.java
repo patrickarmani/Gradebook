@@ -39,12 +39,12 @@ public class Student {
     }
 
     public String getSummary(double passingGrade) {
-    double avg = calculateAverage();
-    String status = getStatus(passingGrade);
-    return "Name: " + name + "\n"
-         + "ID: " + id + "\n"
-         + "Average: " + avg + "\n"
-         + "Status: " + status;
+        double avg = calculateAverage();
+        String status = getStatus(passingGrade);
+        return "Name: " + name + "\n"
+            + "ID: " + id + "\n"
+            + "Average: " + avg + "\n"
+            + "Status: " + status;
 
     }
 

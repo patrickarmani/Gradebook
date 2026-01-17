@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,12 +16,15 @@ public class Main {
             System.out.println("1) Add student");
             System.out.println("2) Add score to student");
             System.out.println("3) Show student report (average + approved/reproved)");
-            System.out.println("4) List all students");
+            System.out.println("4) List all students (HashMap values)");
+            System.out.println("5) Show ranking (TreeSet ordered by average score)");
+            System.out.println("6) Save to CSV");
+            System.out.println("7) Load from CSV");
             System.out.println("0) Exit");
             System.out.print("Choose an option: ");
 
             int option = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             switch (option) {
 
@@ -71,13 +76,41 @@ public class Main {
 
                 case 4: {
                     System.out.println("\n--- All Students ---");
-
-                    // Loop to traverse student records
-                    for (int i = 0; i < gradebook.students.size(); i++) {
-                        Student s = gradebook.students.get(i);
-                        System.out.println(s.id + " - " + s.name);
+                    ArrayList<Student> all = gradebook.getAllStudents();
+                    for (int i = 0; i < all.size(); i++) {
+                        Student currentStudent = all.get(i);
+                        System.out.println(currentStudent.id + " - " + currentStudent.name);
                     }
+                    break;
+                }
 
+                case 5: {
+                    System.out.println("\n--- Ranking (Top to Bottom) ---");
+                    TreeSet<Student> ranking = gradebook.getRanking(PASSING_GRADE);
+                    int position = 1;
+
+                    for (Student currentStudent : ranking) {
+                        System.out.println(position + ") " + currentStudent.id + " - " + currentStudent.name
+                                + " | Avg: " + currentStudent.calculateAverage()
+                                + " | " + currentStudent.getStatus(PASSING_GRADE));
+                        position++;
+                    }
+                    break;
+                }
+
+                case 6: {
+                    System.out.print("Filename (example: gradebook.csv): ");
+                    String filename = scanner.nextLine();
+                    gradebook.saveToFile(filename);
+                    System.out.println("Saved to " + filename);
+                    break;
+                }
+
+                case 7: {
+                    System.out.print("Filename (example: gradebook.csv): ");
+                    String filename = scanner.nextLine();
+                    gradebook.loadFromFile(filename);
+                    System.out.println("Loaded from " + filename);
                     break;
                 }
 

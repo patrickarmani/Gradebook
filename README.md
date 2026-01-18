@@ -1,6 +1,6 @@
 # Overview
 
-==Student Gradebook Project==.
+==Student Gradebook Project==
 
 This project was created to study and learn Java programming language and develop my own method for learning programming languages.
 

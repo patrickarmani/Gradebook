@@ -17,7 +17,7 @@ Basically this app have two purpose:
 
 **Software Demmo link**
 
-https:
+https://youtu.be/YEVm239xIoQ
 
 # Development Environment
 
@@ -33,4 +33,5 @@ Software Language: Java
 
 # Future Work
 
--
+- Create an interface for the end user.
+- Create a field for the student to fill in the subjects they have already seen.
